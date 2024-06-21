@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Length Unit Converter</title>
+</head>
+<body>
+    <h1>Length Unit Converter</h1>
+    <form action="/" method="POST">
+        <label for="value">Value:</label>
+        <input type="text" name="value" id="value" required>
+        <label for="from_unit">From Unit:</label>
+        <select name="from_unit" id="from_unit" required>
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="centimeters">Centimeters</option>
+            <option value="millimeters">Millimeters</option>
+            <option value="miles">Miles</option>
+            <option value="yards">Yards</option>
+            <option value="feet">Feet</option>
+            <option value="inches">Inches</option>
+        </select>
+        <label for="to_unit">To Unit:</label>
+        <select name="to_unit" id="to_unit" required>
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="centimeters">Centimeters</option>
+            <option value="millimeters">Millimeters</option>
+            <option value="miles">Miles</option>
+            <option value="yards">Yards</option>
+            <option value="feet">Feet</option>
+            <option value="inches">Inches</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    {% if result %}
+        <p>Conversion Result: {{ result }}</p>
+    {% endif %}
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
