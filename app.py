@@ -26,15 +26,13 @@ def home():
             if from_unit not in conversion_factors or \
                     to_unit not in conversion_factors:
                 return render_template('index.html',
-                                       error="Invalid unit entered. \
-                                        Please try again.")
+                                       error="Invalid unit entered.")
 
             result = (value * conversion_factors[to_unit] /
                       conversion_factors[from_unit])
             return render_template('index.html', result=result)
         except ValueError:
-            return render_template('index.html', error="Invalid input. \
-                                   Please enter a number for the value.")
+            return render_template('index.html', error="Invalid input.")
     return render_template('index.html')
 
 
@@ -48,16 +46,14 @@ def convert():
 
         if from_unit not in conversion_factors or \
                 to_unit not in conversion_factors:
-            return jsonify({'error': 'Invalid unit entered. \
-                            Please try again.'}), 400
+            return jsonify({'error': 'Invalid unit entered.'}), 400
 
         result = (value * conversion_factors[to_unit] /
                   conversion_factors[from_unit])
         return jsonify({'result': result}), 200
 
     except (ValueError, TypeError):
-        return jsonify({'error': 'Invalid input. \
-                        Please enter a number for the value.'}), 400
+        return jsonify({'error': 'Invalid input.'}), 400
 
 
 if __name__ == '__main__':
